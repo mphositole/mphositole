@@ -33,9 +33,6 @@ export function ToolWorkspace({ tool }: Props) {
   const [output, setOutput] = useState<string>("");
   const callAI = useServerFn(runAITool);
 
-  // reset when tool changes
-  useState(() => setFields(initialState[tool]));
-
   const mutation = useMutation({
     mutationFn: async () => {
       const res = await callAI({ data: { tool, payload: fields } });
